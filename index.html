@@ -303,6 +303,112 @@
             font-size: 0.75rem;
             color: #555;
         }
+        
+        /* Research */
+        .research {
+            padding: 80px 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .research h2 {
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+        
+        .research-intro {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1rem;
+            text-align: center;
+        }
+        
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        
+        .research-card {
+            padding: 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .research-card:hover {
+            border-color: rgba(196, 168, 130, 0.3);
+        }
+        
+        .research-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background: rgba(196, 168, 130, 0.1);
+            color: var(--accent);
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+        }
+        
+        .research-card h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .research-card h3 a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .research-card h3 a:hover {
+            color: var(--accent);
+        }
+        
+        .research-card p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        .research-subsection {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .instrument-research {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .instrument-link {
+            padding: 8px 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .instrument-link:hover {
+            border-color: var(--accent);
+            color: var(--text);
+        }
 
         /* Responsive */
         @media (max-width: 480px) {
@@ -326,7 +432,8 @@
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                 Join TestFlight Beta
             </a>
-            <a href="#features" class="cta-secondary">Learn more ↓</a>
+            <a href="#features" class="cta-secondary">Features ↓</a>
+            <a href="#research" class="cta-secondary">Our Research ↓</a>
         </div>
     </section>
     
@@ -383,7 +490,7 @@
     
     <section class="science">
         <h2>Pure Physics, No Magic</h2>
-        <p>Every sound and visual is generated from mathematical models — wave propagation, interference patterns, and acoustic physics.</p>
+        <p>Every sound and visual is generated from mathematical models — wave propagation, interference patterns, and acoustic physics. We don't make unproven health claims. We build tools grounded in real science.</p>
         <div class="tech-pills">
             <span class="pill">Just-intonation harmonics</span>
             <span class="pill">Chladni figures</span>
@@ -393,6 +500,64 @@
             <span class="pill">Binaural entrainment</span>
             <span class="pill">HRTF spatial audio</span>
             <span class="pill">Decay + diffusion</span>
+        </div>
+    </section>
+    
+    <!-- Research -->
+    <section class="research" id="research">
+        <h2>Built on Research</h2>
+        <p class="research-intro">We publish our research openly. Every design decision — from synthesis parameters to instrument selection — is backed by deep dives into acoustics, psychoacoustics, and evidence-based wellness science.</p>
+        
+        <div class="research-grid">
+            <div class="research-card">
+                <span class="research-tag">Science</span>
+                <h3><a href="research/2026-02-07-sound-healing-science.md">Sound Healing Science: What Holds Up</a></h3>
+                <p>Comprehensive review of binaural beats (22 RCTs), singing bowl evidence, Solfeggio frequency claims, cymatics physics, and spatial audio research. Honest ratings for every claim.</p>
+            </div>
+            <div class="research-card">
+                <span class="research-tag">Instruments</span>
+                <h3><a href="research/2026-02-08-sound-healing-instruments-mvp.md">Instrument Selection & Synthesis</a></h3>
+                <p>Research into acoustic properties, harmonic structures, and synthesis approaches for each instrument — from Tibetan singing bowls to crystal bowls, gongs, and tuning forks.</p>
+            </div>
+            <div class="research-card">
+                <span class="research-tag">Visuals</span>
+                <h3><a href="research/2026-02-12-physarum-deep-research.md">Physarum & Emergent Patterns</a></h3>
+                <p>Deep dive into physarum polycephalum simulation, Chladni plate mathematics, and GPU-accelerated particle systems for real-time cymatics visualization.</p>
+            </div>
+            <div class="research-card">
+                <span class="research-tag">Visuals</span>
+                <h3><a href="research/2026-02-12-physarum-parameter-space.md">Parameter Space Exploration</a></h3>
+                <p>Systematic mapping of simulation parameters — deposit rates, decay functions, sensor geometry — to achieve specific visual aesthetics.</p>
+            </div>
+            <div class="research-card">
+                <span class="research-tag">Market</span>
+                <h3><a href="research/2026-02-07-sound-healing-market-analysis.md">Market Analysis</a></h3>
+                <p>Sound therapy market sizing ($3.58B → $6.68B by 2030), competitor landscape, pricing strategies, and positioning for a synthesis-first approach.</p>
+            </div>
+            <div class="research-card">
+                <span class="research-tag">Market</span>
+                <h3><a href="research/2026-02-07-sound-healing-go-to-market.md">Go-to-Market Strategy</a></h3>
+                <p>Launch strategy, monetization models, user acquisition channels, and market entry timing analysis.</p>
+            </div>
+            <div class="research-card">
+                <span class="research-tag">Localization</span>
+                <h3><a href="research/2026-02-13-sound-healing-market-localization.md">Localization & Global Markets</a></h3>
+                <p>Research into localization ROI (+767% downloads), language prioritization, and cultural adaptation for 14 target markets.</p>
+            </div>
+        </div>
+        
+        <h3 class="research-subsection">Instrument Deep Dives</h3>
+        <div class="instrument-research">
+            <a href="research/instruments/ocean-drum-research.md" class="instrument-link">Ocean Drum</a>
+            <a href="research/instruments/rain-stick-research.md" class="instrument-link">Rain Stick</a>
+            <a href="research/instruments/shruti-box-research.md" class="instrument-link">Shruti Box</a>
+            <a href="research/instruments/tingsha-research.md" class="instrument-link">Tingsha</a>
+            <a href="research/instruments/tuning-fork-research.md" class="instrument-link">Tuning Fork</a>
+            <a href="research/instruments/tongue-drum-research.md" class="instrument-link">Tongue Drum</a>
+            <a href="research/instruments/handpan-research.md" class="instrument-link">Handpan</a>
+            <a href="research/instruments/kalimba-research.md" class="instrument-link">Kalimba</a>
+            <a href="research/instruments/koshi-chimes-research.md" class="instrument-link">Koshi Chimes</a>
+            <a href="research/instruments/didgeridoo-research.md" class="instrument-link">Didgeridoo</a>
         </div>
     </section>
     
