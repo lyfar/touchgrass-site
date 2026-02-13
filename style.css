@@ -10,6 +10,8 @@
     --text-secondary: #888;
     --accent: #c4a882;
     --accent-glow: rgba(196, 168, 130, 0.15);
+    --premium: #b8a0e0;
+    --premium-glow: rgba(184, 160, 224, 0.12);
 }
 
 body {
@@ -191,35 +193,232 @@ body {
     color: var(--text);
 }
 
-/* Features */
-.features {
-    padding: 80px 24px;
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
-    max-width: 800px;
+/* ==================== BENTO ==================== */
+.bento {
+    padding: 80px 24px 40px;
+    max-width: 960px;
     margin: 0 auto;
 }
 
-.feature {
-    padding: 28px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    transition: border-color 0.3s;
+.bento-premium-section {
+    padding-top: 40px;
 }
 
-.feature:hover { border-color: rgba(196, 168, 130, 0.3); }
-.feature-icon { font-size: 1.8rem; margin-bottom: 12px; }
-.feature h3 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
-.feature p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+.bento-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
 
-/* Science/Approach */
+.bento-header h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+}
+
+.bento-label {
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.bento-label-premium {
+    color: var(--premium);
+}
+
+.bento-sub {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* Grid */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+/* Cards */
+.bento-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.bento-card:hover {
+    border-color: rgba(196, 168, 130, 0.3);
+    transform: translateY(-2px);
+}
+
+.bento-wide {
+    grid-column: span 2;
+}
+
+.bento-tall {
+    grid-row: span 2;
+}
+
+.bento-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+    line-height: 1;
+}
+
+.bento-card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+}
+
+.bento-card p {
+    font-size: 0.87rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+/* Badge */
+.badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 8px;
+}
+
+.badge-free {
+    background: rgba(80, 200, 120, 0.12);
+    color: #5ac87a;
+    border: 1px solid rgba(80, 200, 120, 0.2);
+}
+
+/* Instrument chips inside bento card */
+.instrument-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.instrument-chips span {
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Mini list (cymatics) */
+.mini-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 16px;
+}
+
+.mini-list span {
+    padding: 8px 14px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Frequency grid */
+.freq-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.freq-item {
+    text-align: center;
+    padding: 14px 8px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.freq-hz {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 2px;
+}
+
+.freq-name {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+/* Theme dots */
+.theme-dots {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    justify-content: center;
+}
+
+.dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+.dot-mono { background: linear-gradient(135deg, #888, #333); }
+.dot-sand { background: linear-gradient(135deg, #c4a882, #8a7050); }
+.dot-green { background: linear-gradient(135deg, #5ac87a, #2a6040); }
+.dot-ocean { background: linear-gradient(135deg, #5a9cc8, #2a4060); }
+
+.dot-labels {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 0.75rem !important;
+    color: #555 !important;
+}
+
+/* ==================== PREMIUM CARDS ==================== */
+.bento-card-premium {
+    background: linear-gradient(145deg, rgba(184, 160, 224, 0.06) 0%, var(--surface) 100%);
+    border-color: rgba(184, 160, 224, 0.15);
+}
+
+.bento-card-premium:hover {
+    border-color: rgba(184, 160, 224, 0.35);
+    box-shadow: 0 4px 30px var(--premium-glow);
+}
+
+.bento-card-premium h3 {
+    background: linear-gradient(135deg, var(--text) 0%, var(--premium) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ==================== SCIENCE ==================== */
 .science {
-    padding: 60px 24px;
+    padding: 80px 24px;
     text-align: center;
 }
 
@@ -255,38 +454,7 @@ body {
     color: var(--text-secondary);
 }
 
-/* Instruments */
-.instruments {
-    padding: 60px 24px;
-    text-align: center;
-}
-
-.instruments h2 {
-    font-size: clamp(1.5rem, 3.5vw, 2rem);
-    font-weight: 600;
-    margin-bottom: 32px;
-    letter-spacing: -0.02em;
-}
-
-.instrument-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.instrument-chip {
-    padding: 10px 20px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-/* Research CTA on home page */
+/* Research CTA */
 .research-cta {
     padding: 80px 24px;
     text-align: center;
@@ -314,9 +482,7 @@ body {
     flex-wrap: wrap;
 }
 
-.stat {
-    text-align: center;
-}
+.stat { text-align: center; }
 
 .stat-number {
     font-size: 2rem;
@@ -351,10 +517,38 @@ footer .cta-primary { margin-bottom: 24px; }
     color: #555;
 }
 
-/* Responsive */
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .freq-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 480px) {
     .hero { padding: 100px 20px 60px; }
     .app-icon { width: 96px; height: 96px; border-radius: 22px; }
     .cta-primary { padding: 14px 28px; font-size: 1rem; }
     .nav-links a:not(.nav-cta) { display: none; }
+    
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .bento-wide,
+    .bento-tall {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    
+    .freq-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .bento-card {
+        padding: 22px;
+    }
 }
