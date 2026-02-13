@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research — Touch Grass</title>
+    <meta name="description" content="Open research behind Touch Grass Sound Healing. Binaural beats evidence, cymatics physics, instrument acoustics, and market analysis.">
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="stylesheet" href="style.css">
+    <!-- Markdown rendering -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.1/marked.min.js"></script>
+    <style>
+        .research-hero {
+            padding: 120px 24px 60px;
+            text-align: center;
+        }
+        .research-hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+        .research-hero p {
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+        
+        /* Category filters */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 0 24px 40px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 8px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            border-color: var(--accent);
+            color: var(--text);
+            background: var(--accent-glow);
+        }
+        
+        /* Research list */
+        .research-list {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+        .research-item {
+            padding: 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        .research-item:hover {
+            border-color: rgba(196, 168, 130, 0.4);
+            transform: translateY(-1px);
+        }
+        .research-item[data-category].hidden { display: none; }
+        .research-item .meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .research-item .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background: rgba(196, 168, 130, 0.1);
+            color: var(--accent);
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .research-item .date {
+            font-size: 0.75rem;
+            color: #555;
+        }
+        .research-item h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .research-item p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        /* MD Reader overlay */
+        .reader-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--bg);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .reader-overlay.active { display: block; }
+        .reader-header {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            z-index: 10;
+        }
+        .reader-back {
+            padding: 8px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        .reader-back:hover { border-color: var(--accent); }
+        .reader-title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .reader-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+        .markdown-body {
+            background: transparent !important;
+            color: var(--text) !important;
+            font-size: 0.95rem;
+            line-height: 1.75;
+        }
+        .markdown-body h1 { font-size: 1.8rem; border-bottom-color: var(--border); }
+        .markdown-body h2 { font-size: 1.4rem; border-bottom-color: var(--border); margin-top: 2em; }
+        .markdown-body h3 { font-size: 1.15rem; }
+        .markdown-body a { color: var(--accent); }
+        .markdown-body code { background: var(--surface); padding: 2px 6px; border-radius: 4px; font-size: 0.85em; }
+        .markdown-body pre { background: var(--surface) !important; border: 1px solid var(--border); border-radius: 10px; }
+        .markdown-body blockquote { border-left-color: var(--accent); color: var(--text-secondary); }
+        .markdown-body table th, .markdown-body table td { border-color: var(--border); }
+        .markdown-body hr { border-color: var(--border); }
+        .markdown-body strong { color: var(--text); }
+    </style>
+</head>
+<body>
+    <div class="ambient"></div>
+    
+    <nav class="nav">
+        <a href="/" class="nav-logo">
+            <img src="icon.png" alt="Touch Grass" class="nav-icon">
+            <span>Touch Grass</span>
+        </a>
+        <div class="nav-links">
+            <a href="/#features">Features</a>
+            <a href="/research.html" class="active">Research</a>
+            <a href="https://testflight.apple.com/join/a5jT7hhA" class="nav-cta">TestFlight</a>
+        </div>
+    </nav>
+    
+    <section class="research-hero">
+        <h1>Open Research</h1>
+        <p>We publish everything. Every design decision is backed by deep research into acoustics, psychoacoustics, and evidence-based wellness science.</p>
+    </section>
+    
+    <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="science">Science</button>
+        <button class="filter-btn" data-filter="instruments">Instruments</button>
+        <button class="filter-btn" data-filter="visuals">Visuals</button>
+        <button class="filter-btn" data-filter="market">Market</button>
+    </div>
+    
+    <div class="research-list">
+        <!-- Science -->
+        <a class="research-item" data-category="science" data-file="research/2026-02-07-sound-healing-science.md">
+            <div class="meta">
+                <span class="tag">Science</span>
+                <span class="date">Feb 7, 2026</span>
+            </div>
+            <h3>Sound Healing Science: What Holds Up and What Doesn't</h3>
+            <p>Comprehensive review of binaural beats (22 RCTs, Hedges' g = 0.45), singing bowl evidence, Solfeggio frequency claims, cymatics physics, spatial audio research, and brainwave entrainment. Honest evidence ratings for every claim.</p>
+        </a>
+        
+        <!-- Instruments -->
+        <a class="research-item" data-category="instruments" data-file="research/2026-02-08-sound-healing-instruments-mvp.md">
+            <div class="meta">
+                <span class="tag">Instruments</span>
+                <span class="date">Feb 8, 2026</span>
+            </div>
+            <h3>Instrument Selection & Synthesis Architecture</h3>
+            <p>Research into acoustic properties, harmonic structures, and CPU synthesis approaches for each instrument. Competitive analysis of existing sound healing apps.</p>
+        </a>
+        
+        <a class="research-item" data-category="instruments" data-file="research/instruments/ocean-drum-research.md">
+            <div class="meta">
+                <span class="tag">Instruments</span>
+            </div>
+            <h3>Ocean Drum — Acoustic Analysis & Synthesis</h3>
+            <p>Ball-bearing membrane interaction, spectral characteristics, and real-time synthesis model for ocean drum simulation.</p>
+        </a>
+        
+        <a class="research-item" data-category="instruments" data-file="research/instruments/shruti-box-research.md">
+            <div class="meta">
+                <span class="tag">Instruments</span>
+            </div>
+            <h3>Shruti Box — Drone Instrument Deep Dive</h3>
+            <p>Free-reed aerophone analysis, harmonic drone synthesis, and continuous breath-like sustain modeling.</p>
+        </a>
+        
+        <a class="research-item" data-category="instruments" data-file="research/instruments/tingsha-research.md">
+            <div class="meta">
+                <span class="tag">Instruments</span>
+            </div>
+            <h3>Tingsha — Tibetan Meditation Cymbals</h3>
+            <p>Paired cymbal acoustics, beating frequency patterns, and high-frequency harmonic content analysis.</p>
+        </a>
+        
+        <a class="research-item" data-category="instruments" data-file="research/instruments/tuning-fork-research.md">
+            <div class="meta">
+                <span class="tag">Instruments</span>
+            </div>
+            <h3>Tuning Fork — Pure Tone Generation</h3>
+            <p>Near-sinusoidal vibration, Solfeggio frequency applications, and bone conduction properties.</p>
+        </a>
+        
+        <a class="research-item" data-category="instruments" data-file="research/instruments/handpan-research.md">
+            <div class="meta">
+                <span class="tag">Instruments</span>
+            </div>
+            <h3>Handpan — Helmholtz Resonator Analysis</h3>
+            <p>Steel tongue acoustics, modal analysis, and pentatonic scale synthesis for meditative sequencing.</p>
+        </a>
+        
+        <a class="research-item" data-category="instruments" data-file="research/instruments/tongue-drum-research.md">
+            <div class="meta">
+                <span class="tag">Instruments</span>
+            </div>
+            <h3>Tongue Drum — Steel Tongue Synthesis</h3>
+            <p>Tuned steel tongue vibration modes, pentatonic patterns, and sustain characteristics.</p>
+        </a>
+        
+        <a class="research-item" data-category="instruments" data-file="research/instruments/kalimba-research.md">
+            <div class="meta">
+                <span class="tag">Instruments</span>
+            </div>
+            <h3>Kalimba — Thumb Piano Acoustics</h3>
+            <p>Lamellaphone mechanics, buzz bridge effects, and African mbira tradition analysis.</p>
+        </a>
+        
+        <a class="research-item" data-category="instruments" data-file="research/instruments/koshi-chimes-research.md">
+            <div class="meta">
+                <span class="tag">Instruments</span>
+            </div>
+            <h3>Koshi Chimes — Elemental Tuning</h3>
+            <p>Four elemental tunings (Terra, Aqua, Aria, Ignis), bamboo resonance, and random pluck patterns.</p>
+        </a>
+        
+        <a class="research-item" data-category="instruments" data-file="research/instruments/rain-stick-research.md">
+            <div class="meta">
+                <span class="tag">Instruments</span>
+            </div>
+            <h3>Rain Stick — Cascading Noise Synthesis</h3>
+            <p>Granular collision modeling, filtered noise cascades, and gravity-driven particle simulation.</p>
+        </a>
+        
+        <a class="research-item" data-category="instruments" data-file="research/instruments/didgeridoo-research.md">
+            <div class="meta">
+                <span class="tag">Instruments</span>
+            </div>
+            <h3>Didgeridoo — Circular Breathing & Drone</h3>
+            <p>Aboriginal acoustic traditions, formant synthesis, and continuous drone with overtone variations.</p>
+        </a>
+        
+        <!-- Visuals -->
+        <a class="research-item" data-category="visuals" data-file="research/2026-02-12-physarum-deep-research.md">
+            <div class="meta">
+                <span class="tag">Visuals</span>
+                <span class="date">Feb 12, 2026</span>
+            </div>
+            <h3>Physarum Simulation & Emergent Patterns</h3>
+            <p>Deep dive into physarum polycephalum agent-based modeling, Chladni plate mathematics, and GPU-accelerated Metal compute kernels for real-time cymatics.</p>
+        </a>
+        
+        <a class="research-item" data-category="visuals" data-file="research/2026-02-12-physarum-parameter-space.md">
+            <div class="meta">
+                <span class="tag">Visuals</span>
+                <span class="date">Feb 12, 2026</span>
+            </div>
+            <h3>Visual Parameter Space Exploration</h3>
+            <p>Systematic mapping of deposit rates, decay functions, sensor geometry, and flow dynamics to achieve specific visual aesthetics — from sand-like textures to liquid morphologies.</p>
+        </a>
+        
+        <!-- Market -->
+        <a class="research-item" data-category="market" data-file="research/2026-02-07-sound-healing-market-analysis.md">
+            <div class="meta">
+                <span class="tag">Market</span>
+                <span class="date">Feb 7, 2026</span>
+            </div>
+            <h3>Sound Therapy Market Analysis</h3>
+            <p>Market sizing ($3.58B → $6.68B by 2030), competitor landscape (Calm, Headspace, Insight Timer), pricing strategies, and positioning for a synthesis-first approach.</p>
+        </a>
+        
+        <a class="research-item" data-category="market" data-file="research/2026-02-07-sound-healing-go-to-market.md">
+            <div class="meta">
+                <span class="tag">Market</span>
+                <span class="date">Feb 7, 2026</span>
+            </div>
+            <h3>Go-to-Market Strategy</h3>
+            <p>Launch strategy, freemium vs premium monetization, user acquisition channels, and phased market entry.</p>
+        </a>
+        
+        <a class="research-item" data-category="market" data-file="research/2026-02-13-sound-healing-market-localization.md">
+            <div class="meta">
+                <span class="tag">Market</span>
+                <span class="date">Feb 13, 2026</span>
+            </div>
+            <h3>Localization ROI & Global Market Prioritization</h3>
+            <p>Localization yields +767% downloads. Language prioritization across 14 markets, cultural adaptation strategies, and revenue projections by region.</p>
+        </a>
+    </div>
+    
+    <!-- MD Reader -->
+    <div class="reader-overlay" id="reader">
+        <div class="reader-header">
+            <button class="reader-back" onclick="closeReader()">← Back</button>
+            <span class="reader-title" id="reader-title"></span>
+        </div>
+        <div class="reader-body">
+            <article class="markdown-body" id="reader-content"></article>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-meta">
+            <p><a href="/">← Back to Touch Grass</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.research-item').forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+        
+        // MD Reader
+        const reader = document.getElementById('reader');
+        const readerTitle = document.getElementById('reader-title');
+        const readerContent = document.getElementById('reader-content');
+        
+        document.querySelectorAll('.research-item').forEach(item => {
+            item.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const file = item.dataset.file;
+                const title = item.querySelector('h3').textContent;
+                readerTitle.textContent = title;
+                readerContent.innerHTML = '<p style="color: var(--text-secondary)">Loading...</p>';
+                reader.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                history.pushState({ file }, title, `#${file}`);
+                
+                try {
+                    const res = await fetch(file);
+                    const md = await res.text();
+                    readerContent.innerHTML = marked.parse(md);
+                } catch (err) {
+                    readerContent.innerHTML = `<p style="color: #f66">Failed to load: ${file}</p>`;
+                }
+                
+                reader.scrollTop = 0;
+            });
+        });
+        
+        function closeReader() {
+            reader.classList.remove('active');
+            document.body.style.overflow = '';
+            history.pushState({}, '', '/research.html');
+        }
+        
+        // Handle back button
+        window.addEventListener('popstate', () => {
+            if (location.hash && location.hash.startsWith('#research/')) {
+                // Re-open if navigating forward
+            } else {
+                closeReader();
+            }
+        });
+        
+        // Handle direct link to #research/file.md
+        if (location.hash && location.hash.startsWith('#research/')) {
+            const file = location.hash.slice(1);
+            const item = document.querySelector(`[data-file="${file}"]`);
+            if (item) item.click();
+        }
+        
+        // Escape to close
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeReader();
+        });
+    </script>
+</body>
+</html>
