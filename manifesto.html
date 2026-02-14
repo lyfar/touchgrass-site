@@ -3,332 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Manifesto — Touch Grass</title>
     <meta name="description" content="One person, zero employees, pure AI. The manifesto behind Touch Grass — Sound Healing.">
     <meta property="og:title" content="The Manifesto — Touch Grass">
     <meta property="og:description" content="One person vs. an entire industry of guru bullshit. Here's how AI changes the game.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://touchgrass.site/manifesto">
-    <title>The Manifesto — Touch Grass</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="stylesheet" href="style.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .hero {
-            min-height: 100vh;
+        /* Manifesto-specific styles */
+        .manifesto-hero {
+            min-height: 80vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 2rem;
-            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0a 70%);
-            position: relative;
-            overflow: hidden;
+            padding: 140px 24px 80px;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(118, 75, 162, 0.15) 0%, transparent 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
-        }
-
-        .hero-content { position: relative; z-index: 1; max-width: 700px; }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 800;
+        .manifesto-hero h1 {
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 700;
             letter-spacing: -0.03em;
             line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #fff 0%, #a78bfa 100%);
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .hero .subtitle {
-            font-size: 1.25rem;
-            color: #888;
-            margin-bottom: 2rem;
+        .manifesto-hero .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 500px;
         }
 
-        .scroll-hint {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.875rem;
-            color: #555;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(8px); }
-        }
-
-        .content {
+        .manifesto-content {
             max-width: 680px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 0 24px 80px;
         }
 
-        .section {
-            margin-bottom: 5rem;
+        .manifesto-section {
+            margin-bottom: 64px;
         }
 
-        .section h2 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: #fff;
-        }
-
-        .section h2 .num {
-            color: #a78bfa;
-            font-size: 0.875rem;
-            font-weight: 500;
-            display: block;
-            margin-bottom: 0.25rem;
-            letter-spacing: 0.1em;
+        .section-num {
+            font-size: 0.8rem;
+            color: var(--accent);
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-        }
-
-        p { margin-bottom: 1.25rem; color: #b0b0b0; font-size: 1.0625rem; }
-
-        .highlight {
-            color: #fff;
             font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
         }
 
-        .accent { color: #a78bfa; }
+        .manifesto-section h2 {
+            font-size: clamp(1.4rem, 3.5vw, 1.75rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
 
-        blockquote {
-            border-left: 3px solid #a78bfa;
-            padding: 1rem 1.5rem;
-            margin: 2rem 0;
-            background: rgba(167, 139, 250, 0.05);
-            border-radius: 0 8px 8px 0;
+        .manifesto-section p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.75;
+            margin-bottom: 16px;
+        }
+
+        .manifesto-section .hl { color: var(--text); font-weight: 600; }
+        .manifesto-section .ac { color: var(--accent); }
+
+        .manifesto-section blockquote {
+            border-left: 3px solid var(--accent);
+            padding: 16px 24px;
+            margin: 24px 0;
+            background: var(--accent-glow);
+            border-radius: 0 12px 12px 0;
             font-style: italic;
             color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
 
-        .stat-grid {
+        .manifesto-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 28px 0;
         }
 
-        .stat {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 12px;
-            padding: 1.5rem;
+        .m-stat {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 12px;
             text-align: center;
         }
 
-        .stat .number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #a78bfa;
+        .m-stat-num {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
             display: block;
         }
 
-        .stat .label {
-            font-size: 0.8rem;
-            color: #666;
+        .m-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-top: 0.25rem;
+            letter-spacing: 0.06em;
+            margin-top: 4px;
         }
 
         .stack-list {
             list-style: none;
             padding: 0;
-            margin: 1.5rem 0;
+            margin: 20px 0;
         }
 
         .stack-list li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
         }
 
-        .stack-list .emoji { font-size: 1.25rem; }
-        .stack-list .name { color: #fff; font-weight: 500; }
-        .stack-list .desc { color: #666; font-size: 0.875rem; margin-left: auto; }
+        .stack-list .emoji { font-size: 1.2rem; }
+        .stack-list .name { color: var(--text); font-weight: 500; font-size: 0.95rem; }
+        .stack-list .desc { color: var(--text-secondary); font-size: 0.82rem; margin-left: auto; }
 
-        .cta {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0a 70%);
-        }
-
-        .cta h2 {
-            font-size: 2rem;
-            color: #fff;
-            margin-bottom: 1rem;
-        }
-
-        .cta p { color: #888; max-width: 500px; margin: 0 auto 2rem; }
-
-        .cta a {
-            display: inline-block;
-            padding: 0.875rem 2rem;
-            background: #a78bfa;
-            color: #000;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .cta a:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(167, 139, 250, 0.3); }
-
-        .back-link {
-            display: inline-block;
-            color: #555;
-            text-decoration: none;
-            padding: 1rem 2rem;
-            font-size: 0.875rem;
-        }
-
-        .back-link:hover { color: #a78bfa; }
-
-        .divider {
+        .manifesto-divider {
             width: 40px;
             height: 2px;
-            background: #a78bfa;
-            margin: 3rem auto;
-            opacity: 0.5;
+            background: var(--accent);
+            margin: 48px auto;
+            opacity: 0.4;
+        }
+
+        .manifesto-cta {
+            text-align: center;
+            padding: 80px 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .manifesto-cta h2 {
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .manifesto-cta p {
+            color: var(--text-secondary);
+            max-width: 460px;
+            margin: 0 auto 28px;
+            font-size: 1rem;
+        }
+
+        .manifesto-footer {
+            text-align: center;
+            color: #555;
+            font-size: 0.875rem;
+            padding-bottom: 24px;
+        }
+
+        .manifesto-footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 480px) {
+            .manifesto-stats { grid-template-columns: repeat(2, 1fr); }
+            .stack-list .desc { display: none; }
         }
     </style>
 </head>
 <body>
-    <a href="/" class="back-link">← Back to Touch Grass</a>
+    <div class="ambient"></div>
 
-    <div class="hero">
-        <div class="hero-content">
-            <h1>One Person.<br>Zero Employees.<br>Pure AI.</h1>
-            <p class="subtitle">This is how one developer and a fleet of AI agents<br>are building a global wellness app.</p>
+    <nav class="nav">
+        <a href="/" class="nav-logo">
+            <img src="icon.png" alt="Touch Grass" class="nav-icon">
+            <span>Touch Grass</span>
+        </a>
+        <div class="nav-links">
+            <a href="/#features">Features</a>
+            <a href="/research">Research</a>
+            <a href="/manifesto" class="active">Manifesto</a>
+            <a href="/team">Team</a>
+            <a href="https://testflight.apple.com/join/a5jT7hhA" class="nav-cta">TestFlight</a>
         </div>
-        <div class="scroll-hint">↓ scroll</div>
-    </div>
+    </nav>
 
-    <div class="content">
+    <section class="manifesto-hero">
+        <p class="tagline">The Manifesto</p>
+        <h1>One Person.<br>Zero Employees.<br>Pure AI.</h1>
+        <p class="subtitle">How one developer and a fleet of AI agents are building a global wellness app.</p>
+    </section>
 
-        <div class="section">
-            <h2><span class="num">01 — The Problem</span>The Wellness Industry Is Broken</h2>
-            <p>There are roughly <span class="highlight">10,000 meditation apps</span> on the App Store. Most of them sound like they were written by someone who just came back from a $5,000 Bali retreat and needs to recoup their investment.</p>
-            <p><span class="accent">"Manifest your abundance."</span><br><span class="accent">"Open your third eye chakra."</span><br><span class="accent">"Choose joy."</span></p>
-            <p>Cool. Meanwhile, Gen Z is dealing with actual cognitive distortions — <span class="highlight">sunk cost fallacy</span> keeping them in dead-end relationships, <span class="highlight">spotlight effect</span> making them terrified of posting anything real, <span class="highlight">negativity bias</span> feeding their doom-scrolling habit.</p>
-            <p>Nobody is talking to them in their language. Nobody is treating their brain like what it actually is — <span class="highlight">a glitchy operating system that needs a firmware patch, not a guru</span>.</p>
+    <div class="manifesto-content">
+
+        <div class="manifesto-section">
+            <span class="section-num">01 — The Problem</span>
+            <h2>The Wellness Industry Is Broken</h2>
+            <p>There are roughly <span class="hl">10,000 meditation apps</span> on the App Store. Most of them sound like they were written by someone who just came back from a $5,000 Bali retreat and needs to recoup their investment.</p>
+            <p><span class="ac">"Manifest your abundance."</span><br><span class="ac">"Open your third eye chakra."</span><br><span class="ac">"Choose joy."</span></p>
+            <p>Cool. Meanwhile, Gen Z is dealing with actual cognitive distortions — <span class="hl">sunk cost fallacy</span> keeping them in dead-end relationships, <span class="hl">spotlight effect</span> making them terrified of posting anything real, <span class="hl">negativity bias</span> feeding their doom-scrolling habit.</p>
+            <p>Nobody is talking to them in their language. Nobody is treating their brain like what it actually is — <span class="hl">a glitchy operating system that needs a firmware patch, not a guru</span>.</p>
         </div>
 
-        <div class="section">
-            <h2><span class="num">02 — The Bet</span>What If One Person Could Do It All?</h2>
+        <div class="manifesto-section">
+            <span class="section-num">02 — The Bet</span>
+            <h2>What If One Person Could Do It All?</h2>
             <p>The traditional playbook says you need a team. 10 developers. 3 marketers. A content team. A support team. A social media intern who "gets" TikTok. Minimum $50K/month burn rate before you make a cent.</p>
-            <p>But here's the thing: <span class="highlight">2026 isn't 2020</span>.</p>
+            <p>But here's the thing: <span class="hl">2026 isn't 2020</span>.</p>
             <p>AI doesn't just help you write emails faster. It fundamentally changes the economics of building a product. What used to require a team of 20 working for a quarter, AI agents can do in a week.</p>
-            <p>Not "AI-assisted." Not "AI-enhanced." <span class="highlight">AI-operated.</span></p>
+            <p>Not "AI-assisted." Not "AI-enhanced." <span class="hl">AI-operated.</span></p>
 
-            <div class="stat-grid">
-                <div class="stat">
-                    <span class="number">1</span>
-                    <span class="label">Human</span>
-                </div>
-                <div class="stat">
-                    <span class="number">15</span>
-                    <span class="label">AI Agents</span>
-                </div>
-                <div class="stat">
-                    <span class="number">14</span>
-                    <span class="label">Languages</span>
-                </div>
-                <div class="stat">
-                    <span class="number">$0</span>
-                    <span class="label">Marketing Budget</span>
-                </div>
+            <div class="manifesto-stats">
+                <div class="m-stat"><span class="m-stat-num">1</span><span class="m-stat-label">Human</span></div>
+                <div class="m-stat"><span class="m-stat-num">15</span><span class="m-stat-label">AI Agents</span></div>
+                <div class="m-stat"><span class="m-stat-num">14</span><span class="m-stat-label">Languages</span></div>
+                <div class="m-stat"><span class="m-stat-num">$0</span><span class="m-stat-label">Marketing Budget</span></div>
             </div>
         </div>
 
-        <div class="section">
-            <h2><span class="num">03 — The Machine</span>How It Actually Works</h2>
+        <div class="manifesto-section">
+            <span class="section-num">03 — The Machine</span>
+            <h2>How It Actually Works</h2>
             <p>Every piece of this operation — from research to distribution — runs through an automated pipeline. One database. 30 tables. Every agent knows exactly what it can read, write, and what requires human approval.</p>
 
             <ul class="stack-list">
-                <li>
-                    <span class="emoji">🔬</span>
-                    <span class="name">Research Agent</span>
-                    <span class="desc">Deep dives into cognitive science</span>
-                </li>
-                <li>
-                    <span class="emoji">✍️</span>
-                    <span class="name">Script Writer</span>
-                    <span class="desc">Turns research into 3-min audio sessions</span>
-                </li>
-                <li>
-                    <span class="emoji">🎵</span>
-                    <span class="name">Music Producer</span>
-                    <span class="desc">Generates tracks with AI vocals</span>
-                </li>
-                <li>
-                    <span class="emoji">🌍</span>
-                    <span class="name">Localizer × 14</span>
-                    <span class="desc">Cultural adaptation, not translation</span>
-                </li>
-                <li>
-                    <span class="emoji">📈</span>
-                    <span class="name">ASO Manager</span>
-                    <span class="desc">Optimizes 14 App Store markets</span>
-                </li>
-                <li>
-                    <span class="emoji">📱</span>
-                    <span class="name">Social Media</span>
-                    <span class="desc">TikTok, Instagram, Reddit per market</span>
-                </li>
-                <li>
-                    <span class="emoji">📰</span>
-                    <span class="name">PR Agent</span>
-                    <span class="desc">Press outreach in every region</span>
-                </li>
-                <li>
-                    <span class="emoji">💬</span>
-                    <span class="name">Support Agent</span>
-                    <span class="desc">Monitors reviews, responds, learns</span>
-                </li>
-                <li>
-                    <span class="emoji">📊</span>
-                    <span class="name">Analytics</span>
-                    <span class="desc">Daily metrics, insights, iterations</span>
-                </li>
+                <li><span class="emoji">🔬</span><span class="name">Research Agent</span><span class="desc">Deep dives into cognitive science</span></li>
+                <li><span class="emoji">✍️</span><span class="name">Script Writer</span><span class="desc">Turns research into 3-min audio sessions</span></li>
+                <li><span class="emoji">🎵</span><span class="name">Music Producer</span><span class="desc">Generates tracks with AI vocals</span></li>
+                <li><span class="emoji">🌍</span><span class="name">Localizer × 14</span><span class="desc">Cultural adaptation, not translation</span></li>
+                <li><span class="emoji">📈</span><span class="name">ASO Manager</span><span class="desc">Optimizes 14 App Store markets</span></li>
+                <li><span class="emoji">📱</span><span class="name">Social Media</span><span class="desc">TikTok, Instagram, Reddit per market</span></li>
+                <li><span class="emoji">📰</span><span class="name">PR Agent</span><span class="desc">Press outreach in every region</span></li>
+                <li><span class="emoji">💬</span><span class="name">Support Agent</span><span class="desc">Monitors reviews, responds, learns</span></li>
+                <li><span class="emoji">📊</span><span class="name">Analytics</span><span class="desc">Daily metrics, insights, iterations</span></li>
             </ul>
 
-            <p>The human decides <span class="highlight">what</span> to build. The agents figure out <span class="highlight">how</span>, and they do it simultaneously across every market.</p>
+            <p>The human decides <span class="hl">what</span> to build. The agents figure out <span class="hl">how</span>, and they do it simultaneously across every market.</p>
         </div>
 
-        <div class="section">
-            <h2><span class="num">04 — The Content</span>Firmware Patches for Your Brain</h2>
-            <p>Every session is a 3-minute audio experience backed by neuroscience research. Not meditation. Not mindfulness. <span class="highlight">A diagnostic and a patch.</span></p>
+        <div class="manifesto-section">
+            <span class="section-num">04 — The Content</span>
+            <h2>Firmware Patches for Your Brain</h2>
+            <p>Every session is a 3-minute audio experience backed by neuroscience research. Not meditation. Not mindfulness. <span class="hl">A diagnostic and a patch.</span></p>
 
             <blockquote>
                 "So you've been watching a movie for an hour. It's terrible. Like, objectively bad. But you keep watching because you already invested an hour, right? Congratulations — your brain just played you."<br><br>
@@ -336,40 +266,58 @@
             </blockquote>
 
             <p>Each session layers AI-generated vocals over real-time synthesized instruments — singing bowls, gongs, crystal bowls — that respond to the content. Your phone becomes a sound healing instrument with a brain.</p>
-            <p><span class="highlight">20 cognitive biases. 14 languages. 280 unique sessions.</span> All generated, verified, and published by the AI pipeline.</p>
+            <p><span class="hl">20 cognitive biases. 14 languages. 280 unique sessions.</span> All generated, verified, and published by the AI pipeline.</p>
         </div>
 
-        <div class="section">
-            <h2><span class="num">05 — The Philosophy</span>Anti-Guru, Pro-Science</h2>
+        <div class="manifesto-section">
+            <span class="section-num">05 — The Philosophy</span>
+            <h2>Anti-Guru, Pro-Science</h2>
             <p>We don't tell you to "manifest abundance" or "open your chakras." We don't have a founder who discovered enlightenment in an ashram and now charges $29.99/month for it.</p>
-            <p>We have <span class="highlight">peer-reviewed research</span>, <span class="highlight">physics-based audio synthesis</span>, and a fundamental belief that your brain is doing its best with buggy software — and sometimes it just needs a patch.</p>
+            <p>We have <span class="hl">peer-reviewed research</span>, <span class="hl">physics-based audio synthesis</span>, and a fundamental belief that your brain is doing its best with buggy software — and sometimes it just needs a patch.</p>
             <p>Every claim in the app links to a DOI. Every frequency has a citation. Every cognitive bias session references the original research.</p>
             <p>If we can't prove it works, we don't ship it.</p>
         </div>
 
-        <div class="section">
-            <h2><span class="num">06 — The Goal</span>$1M. One Person. 2026.</h2>
-            <p>This isn't a hobby project. This is a bet that the <span class="highlight">economics of AI-operated businesses are fundamentally different</span> from anything that came before.</p>
+        <div class="manifesto-section">
+            <span class="section-num">06 — The Goal</span>
+            <h2>$1M. One Person. 2026.</h2>
+            <p>This isn't a hobby project. This is a bet that the <span class="hl">economics of AI-operated businesses are fundamentally different</span> from anything that came before.</p>
             <p>When your marginal cost of entering a new market is approximately $0, you don't do "gradual rollout." You launch everywhere at once. When your support team is an AI agent, you don't worry about timezone coverage. When your content pipeline is automated, adding a new language is a database entry, not a headcount decision.</p>
-            <p>The wellness app market is worth <span class="highlight">$1.5 billion</span>. We need <span class="highlight">0.07%</span> of it.</p>
+            <p>The wellness app market is worth <span class="hl">$1.5 billion</span>. We need <span class="hl">0.07%</span> of it.</p>
             <p>One person. Fifteen agents. The math works.</p>
         </div>
 
-        <div class="divider"></div>
+        <div class="manifesto-divider"></div>
 
-        <div class="section" style="text-align: center;">
-            <p style="color: #555; font-size: 0.9375rem;">
-                Built in Hong Kong by <a href="https://github.com/lyfar" style="color: #a78bfa; text-decoration: none; padding: 0; border: none;">Egor Lyfar</a><br>
-                with Claude, Gemini, and a lot of caffeine.<br><br>
-                2026
-            </p>
+        <div class="manifesto-footer">
+            <p>Built in Hong Kong by <a href="https://github.com/lyfar">Egor Lyfar</a><br>with Claude, Gemini, and a lot of caffeine.<br><br>2026</p>
         </div>
     </div>
 
-    <div class="cta">
+    <section class="manifesto-cta">
         <h2>Try the patch.</h2>
         <p>20 cognitive bias sessions. 14 languages. Real-time sound healing. No guru required.</p>
-        <a href="/">Download Touch Grass →</a>
-    </div>
+        <a href="https://testflight.apple.com/join/a5jT7hhA" class="cta-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Join TestFlight Beta
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-meta">
+            <p>Available in 14 languages · iOS 17+</p>
+            <p style="margin-top: 12px;">
+                <a href="/manifesto">The Manifesto</a> · 
+                <a href="/team">Meet the Team</a> · 
+                <a href="/research">Research</a>
+            </p>
+            <p style="margin-top: 8px;">
+                <a href="/privacy">Privacy Policy</a> · 
+                <a href="/support">Support</a>
+            </p>
+            <p style="margin-top: 8px;">Built by <a href="https://lyfar.com">Lyfar Studio</a></p>
+        </div>
+        <p class="languages">EN · DE · ES · FR · JA · PT · RU · 中文 · العربية · 한국어 · NL · TR · IT · हिन्दी</p>
+    </footer>
 </body>
 </html>
