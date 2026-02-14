@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="One person, zero employees, pure AI. The manifesto behind Touch Grass — Sound Healing.">
+    <meta property="og:title" content="The Manifesto — Touch Grass">
+    <meta property="og:description" content="One person vs. an entire industry of guru bullshit. Here's how AI changes the game.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://touchgrass.site/manifesto">
+    <title>The Manifesto — Touch Grass</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0a 70%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(118, 75, 162, 0.15) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+        }
+
+        .hero-content { position: relative; z-index: 1; max-width: 700px; }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.875rem;
+            color: #555;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        .content {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 5rem;
+        }
+
+        .section h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .section h2 .num {
+            color: #a78bfa;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.25rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        p { margin-bottom: 1.25rem; color: #b0b0b0; font-size: 1.0625rem; }
+
+        .highlight {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .accent { color: #a78bfa; }
+
+        blockquote {
+            border-left: 3px solid #a78bfa;
+            padding: 1rem 1.5rem;
+            margin: 2rem 0;
+            background: rgba(167, 139, 250, 0.05);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #ccc;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat .number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #a78bfa;
+            display: block;
+        }
+
+        .stat .label {
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
+
+        .stack-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .stack-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .stack-list .emoji { font-size: 1.25rem; }
+        .stack-list .name { color: #fff; font-weight: 500; }
+        .stack-list .desc { color: #666; font-size: 0.875rem; margin-left: auto; }
+
+        .cta {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0a 70%);
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .cta p { color: #888; max-width: 500px; margin: 0 auto 2rem; }
+
+        .cta a {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            background: #a78bfa;
+            color: #000;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .cta a:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(167, 139, 250, 0.3); }
+
+        .back-link {
+            display: inline-block;
+            color: #555;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            font-size: 0.875rem;
+        }
+
+        .back-link:hover { color: #a78bfa; }
+
+        .divider {
+            width: 40px;
+            height: 2px;
+            background: #a78bfa;
+            margin: 3rem auto;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-link">← Back to Touch Grass</a>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>One Person.<br>Zero Employees.<br>Pure AI.</h1>
+            <p class="subtitle">This is how one developer and a fleet of AI agents<br>are building a global wellness app.</p>
+        </div>
+        <div class="scroll-hint">↓ scroll</div>
+    </div>
+
+    <div class="content">
+
+        <div class="section">
+            <h2><span class="num">01 — The Problem</span>The Wellness Industry Is Broken</h2>
+            <p>There are roughly <span class="highlight">10,000 meditation apps</span> on the App Store. Most of them sound like they were written by someone who just came back from a $5,000 Bali retreat and needs to recoup their investment.</p>
+            <p><span class="accent">"Manifest your abundance."</span><br><span class="accent">"Open your third eye chakra."</span><br><span class="accent">"Choose joy."</span></p>
+            <p>Cool. Meanwhile, Gen Z is dealing with actual cognitive distortions — <span class="highlight">sunk cost fallacy</span> keeping them in dead-end relationships, <span class="highlight">spotlight effect</span> making them terrified of posting anything real, <span class="highlight">negativity bias</span> feeding their doom-scrolling habit.</p>
+            <p>Nobody is talking to them in their language. Nobody is treating their brain like what it actually is — <span class="highlight">a glitchy operating system that needs a firmware patch, not a guru</span>.</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="num">02 — The Bet</span>What If One Person Could Do It All?</h2>
+            <p>The traditional playbook says you need a team. 10 developers. 3 marketers. A content team. A support team. A social media intern who "gets" TikTok. Minimum $50K/month burn rate before you make a cent.</p>
+            <p>But here's the thing: <span class="highlight">2026 isn't 2020</span>.</p>
+            <p>AI doesn't just help you write emails faster. It fundamentally changes the economics of building a product. What used to require a team of 20 working for a quarter, AI agents can do in a week.</p>
+            <p>Not "AI-assisted." Not "AI-enhanced." <span class="highlight">AI-operated.</span></p>
+
+            <div class="stat-grid">
+                <div class="stat">
+                    <span class="number">1</span>
+                    <span class="label">Human</span>
+                </div>
+                <div class="stat">
+                    <span class="number">15</span>
+                    <span class="label">AI Agents</span>
+                </div>
+                <div class="stat">
+                    <span class="number">14</span>
+                    <span class="label">Languages</span>
+                </div>
+                <div class="stat">
+                    <span class="number">$0</span>
+                    <span class="label">Marketing Budget</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="num">03 — The Machine</span>How It Actually Works</h2>
+            <p>Every piece of this operation — from research to distribution — runs through an automated pipeline. One database. 30 tables. Every agent knows exactly what it can read, write, and what requires human approval.</p>
+
+            <ul class="stack-list">
+                <li>
+                    <span class="emoji">🔬</span>
+                    <span class="name">Research Agent</span>
+                    <span class="desc">Deep dives into cognitive science</span>
+                </li>
+                <li>
+                    <span class="emoji">✍️</span>
+                    <span class="name">Script Writer</span>
+                    <span class="desc">Turns research into 3-min audio sessions</span>
+                </li>
+                <li>
+                    <span class="emoji">🎵</span>
+                    <span class="name">Music Producer</span>
+                    <span class="desc">Generates tracks with AI vocals</span>
+                </li>
+                <li>
+                    <span class="emoji">🌍</span>
+                    <span class="name">Localizer × 14</span>
+                    <span class="desc">Cultural adaptation, not translation</span>
+                </li>
+                <li>
+                    <span class="emoji">📈</span>
+                    <span class="name">ASO Manager</span>
+                    <span class="desc">Optimizes 14 App Store markets</span>
+                </li>
+                <li>
+                    <span class="emoji">📱</span>
+                    <span class="name">Social Media</span>
+                    <span class="desc">TikTok, Instagram, Reddit per market</span>
+                </li>
+                <li>
+                    <span class="emoji">📰</span>
+                    <span class="name">PR Agent</span>
+                    <span class="desc">Press outreach in every region</span>
+                </li>
+                <li>
+                    <span class="emoji">💬</span>
+                    <span class="name">Support Agent</span>
+                    <span class="desc">Monitors reviews, responds, learns</span>
+                </li>
+                <li>
+                    <span class="emoji">📊</span>
+                    <span class="name">Analytics</span>
+                    <span class="desc">Daily metrics, insights, iterations</span>
+                </li>
+            </ul>
+
+            <p>The human decides <span class="highlight">what</span> to build. The agents figure out <span class="highlight">how</span>, and they do it simultaneously across every market.</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="num">04 — The Content</span>Firmware Patches for Your Brain</h2>
+            <p>Every session is a 3-minute audio experience backed by neuroscience research. Not meditation. Not mindfulness. <span class="highlight">A diagnostic and a patch.</span></p>
+
+            <blockquote>
+                "So you've been watching a movie for an hour. It's terrible. Like, objectively bad. But you keep watching because you already invested an hour, right? Congratulations — your brain just played you."<br><br>
+                — From "Sunk Cost Fallacy," one of 20 cognitive bias patches
+            </blockquote>
+
+            <p>Each session layers AI-generated vocals over real-time synthesized instruments — singing bowls, gongs, crystal bowls — that respond to the content. Your phone becomes a sound healing instrument with a brain.</p>
+            <p><span class="highlight">20 cognitive biases. 14 languages. 280 unique sessions.</span> All generated, verified, and published by the AI pipeline.</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="num">05 — The Philosophy</span>Anti-Guru, Pro-Science</h2>
+            <p>We don't tell you to "manifest abundance" or "open your chakras." We don't have a founder who discovered enlightenment in an ashram and now charges $29.99/month for it.</p>
+            <p>We have <span class="highlight">peer-reviewed research</span>, <span class="highlight">physics-based audio synthesis</span>, and a fundamental belief that your brain is doing its best with buggy software — and sometimes it just needs a patch.</p>
+            <p>Every claim in the app links to a DOI. Every frequency has a citation. Every cognitive bias session references the original research.</p>
+            <p>If we can't prove it works, we don't ship it.</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="num">06 — The Goal</span>$1M. One Person. 2026.</h2>
+            <p>This isn't a hobby project. This is a bet that the <span class="highlight">economics of AI-operated businesses are fundamentally different</span> from anything that came before.</p>
+            <p>When your marginal cost of entering a new market is approximately $0, you don't do "gradual rollout." You launch everywhere at once. When your support team is an AI agent, you don't worry about timezone coverage. When your content pipeline is automated, adding a new language is a database entry, not a headcount decision.</p>
+            <p>The wellness app market is worth <span class="highlight">$1.5 billion</span>. We need <span class="highlight">0.07%</span> of it.</p>
+            <p>One person. Fifteen agents. The math works.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section" style="text-align: center;">
+            <p style="color: #555; font-size: 0.9375rem;">
+                Built in Hong Kong by <a href="https://github.com/lyfar" style="color: #a78bfa; text-decoration: none; padding: 0; border: none;">Egor Lyfar</a><br>
+                with Claude, Gemini, and a lot of caffeine.<br><br>
+                2026
+            </p>
+        </div>
+    </div>
+
+    <div class="cta">
+        <h2>Try the patch.</h2>
+        <p>20 cognitive bias sessions. 14 languages. Real-time sound healing. No guru required.</p>
+        <a href="/">Download Touch Grass →</a>
+    </div>
+</body>
+</html>

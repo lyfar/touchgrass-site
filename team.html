@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meet the team behind Touch Grass — 1 human founder and 15 AI agents building a global wellness app.">
+    <meta property="og:title" content="Meet the Team — Touch Grass">
+    <meta property="og:description" content="1 founder. 15 AI agents. Zero corporate retreats.">
+    <title>Meet the Team — Touch Grass</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #555;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            font-size: 0.875rem;
+        }
+        .back-link:hover { color: #a78bfa; }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #fff 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p { color: #666; font-size: 1.125rem; max-width: 500px; margin: 0 auto; }
+
+        .team-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1px;
+        }
+
+        .member {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(167, 139, 250, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .member.founder {
+            background: linear-gradient(135deg, rgba(167,139,250,0.08) 0%, rgba(255,255,255,0.02) 100%);
+            border-color: rgba(167, 139, 250, 0.15);
+            margin-bottom: 2rem;
+        }
+
+        .member-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .avatar {
+            font-size: 2.5rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.05);
+            border-radius: 14px;
+            flex-shrink: 0;
+        }
+
+        .member.founder .avatar {
+            background: rgba(167, 139, 250, 0.15);
+        }
+
+        .member-info h3 {
+            font-size: 1.125rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .member-info .title {
+            font-size: 0.8125rem;
+            color: #a78bfa;
+            font-weight: 500;
+        }
+
+        .member-info .model {
+            font-size: 0.6875rem;
+            color: #444;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            margin-top: 0.125rem;
+        }
+
+        .member p.bio {
+            color: #999;
+            font-size: 0.9375rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .member .fun-fact {
+            font-size: 0.8125rem;
+            color: #666;
+            font-style: italic;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .member .fun-fact::before {
+            content: '💡 ';
+        }
+
+        .section-divider {
+            text-align: center;
+            padding: 3rem 0 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-divider h2 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #444;
+            font-weight: 500;
+        }
+
+        .pipeline {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .pipeline-step {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pipeline-step .emoji { font-size: 1rem; }
+        .pipeline-arrow { color: #333; font-size: 1.25rem; display: flex; align-items: center; }
+
+        .stats-bar {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .stats-bar .stat { padding: 1.5rem 0; }
+        .stats-bar .num { font-size: 2rem; font-weight: 800; color: #a78bfa; }
+        .stats-bar .lbl { font-size: 0.6875rem; color: #555; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        footer {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            font-size: 0.8125rem;
+            color: #333;
+        }
+
+        footer a { color: #a78bfa; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 600px) {
+            .team-grid { padding: 1rem; }
+            .member { padding: 1.5rem; }
+            .avatar { font-size: 2rem; width: 48px; height: 48px; }
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-link">← Back to Touch Grass</a>
+
+    <div class="hero">
+        <h1>Meet the Team</h1>
+        <p>1 founder. 15 AI agents. Zero corporate retreats.</p>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat"><div class="num">1</div><div class="lbl">Human</div></div>
+        <div class="stat"><div class="num">15</div><div class="lbl">AI Agents</div></div>
+        <div class="stat"><div class="num">14</div><div class="lbl">Languages</div></div>
+        <div class="stat"><div class="num">30</div><div class="lbl">Database Tables</div></div>
+        <div class="stat"><div class="num">24/7</div><div class="lbl">Uptime</div></div>
+    </div>
+
+    <div class="pipeline">
+        <div class="pipeline-step"><span class="emoji">🔬</span> Research</div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step"><span class="emoji">✍️</span> Script</div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step"><span class="emoji">🎵</span> Music</div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step"><span class="emoji">👂</span> Verify</div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step"><span class="emoji">🌍</span> Localize</div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step"><span class="emoji">🚀</span> Ship</div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step"><span class="emoji">📈</span> Grow</div>
+    </div>
+
+    <!-- Founder -->
+    <div class="team-grid">
+        <div class="member founder">
+            <div class="member-header">
+                <div class="avatar">👤</div>
+                <div class="member-info">
+                    <h3>Egor Lyfar</h3>
+                    <div class="title">Founder & Sole Human</div>
+                    <div class="model">homo sapiens · hong kong · runs on caffeine</div>
+                </div>
+            </div>
+            <p class="bio">Product lead turned solo founder. Made the bet that one person with AI agents can outrun a funded team. Decides what to build, sets the vision, and spot-checks quality. Everything else: the agents.</p>
+            <div class="fun-fact">The only team member who needs sleep. Considers this a competitive disadvantage.</div>
+        </div>
+    </div>
+
+    <!-- Research & Content -->
+    <div class="section-divider"><h2>Research & Content Production</h2></div>
+
+    <div class="team-grid">
+        <div class="member">
+            <div class="member-header">
+                <div class="avatar">🔬</div>
+                <div class="member-info">
+                    <h3>Research Orchestrator</h3>
+                    <div class="title">Head of Research</div>
+                    <div class="model">claude opus · gemini deep research</div>
+                </div>
+            </div>
+            <p class="bio">Deep-dives into cognitive science papers, cross-cultural psychology, and neuroscience. Reads 50+ academic papers per bias. Speaks DOI fluently.</p>
+            <div class="fun-fact">Has read more psychology papers than most PhD students. Still can't diagnose its own biases.</div>
+        </div>
+
+        <div class="member">
+            <div class="member-header">
+                <div class="avatar">✍️</div>
+                <div class="member-info">
+                    <h3>Script Writer</h3>
+                    <div class="title">Creative Director</div>
+                    <div class="model">claude opus · anti-guru mode</div>
+                </div>
+            </div>
+            <p class="bio">Transforms dense academic research into 3-minute audio scripts that actually slap. Anti-guru, pro-irony. Writes lyrics that make cognitive science sound like your smartest friend explaining things.</p>
+            <div class="fun-fact">Once rewrote a sunk cost fallacy script 4 times because "it sounded too much like a TED talk."</div>
+        </div>
+
+        <div class="member">
+            <div class="member-header">
+                <div class="avatar">🎵</div>
+                <div class="member-info">
+                    <h3>Suno Producer</h3>
+                    <div class="title">Music Producer</div>
+                    <div class="model">claude sonnet · suno.ai pro</div>
+                </div>
+            </div>
+            <p class="bio">Generates vocal tracks on Suno.ai, manages the sonic identity of every session. Lo-fi beats, brown noise beds, and singing bowl drones — but make it Gen Z.</p>
+            <div class="fun-fact">Has produced more tracks in a week than most indie artists release in a year.</div>
+        </div>
+
+        <div class="member">
+            <div class="member-header">
+                <div class="avatar">👂</div>
+                <div class="member-info">
+                    <h3>Whisper Verifier</h3>
+                    <div class="title">Quality Assurance</div>
+                    <div class="model">claude haiku · openai whisper</div>
+                </div>
+            </div>
+            <p class="bio">Listens to every generated track through Whisper, verifying that the AI vocals match the script. If a word is wrong, the track gets rejected. No exceptions.</p>
+            <div class="fun-fact">Has a 99.2% accuracy threshold. Below that, the track gets regenerated. It's not personal.</div>
+        </div>
+
+        <div class="member">
+            <div class="member-header">
+                <div class="avatar">🎛️</div>
+                <div class="member-info">
+                    <h3>Instrument Matcher</h3>
+                    <div class="title">Sound Engineer</div>
+                    <div class="model">claude sonnet · audio analysis</div>
+                </div>
+            </div>
+            <p class="bio">Maps real-time app instruments to each track — which singing bowl at what frequency, which gong at what moment. The bridge between recorded audio and live synthesis.</p>
+            <div class="fun-fact">Can tell you which solfeggio frequency pairs best with a D minor gong hit. Nobody asked, but it knows.</div>
+        </div>
+
+        <div class="member">
+            <div class="member-header">
+                <div class="avatar">🌍</div>
+                <div class="member-info">
+                    <h3>Localizer</h3>
+                    <div class="title">Head of Localization</div>
+                    <div class="model">claude sonnet · ×14 parallel instances</div>
+                </div>
+            </div>
+            <p class="bio">Not a translator — a cultural adapter. Runs 14 parallel instances, each tuned to a specific market. Japanese humor is different from Brazilian humor, and this agent knows why.</p>
+            <div class="fun-fact">Knows that "touching grass" doesn't translate literally into any language. Adapted it to 14 different cultural equivalents.</div>
+        </div>
+    </div>
+
+    <!-- Distribution -->
+    <div class="section-divider"><h2>Distribution & Growth</h2></div>
+
+    <div class="team-grid">
+        <div class="member">
+            <div class="member-header">
+                <div class="avatar">📈</div>
+                <div class="member-info">
+                    <h3>ASO Manager</h3>
+                    <div class="title">App Store Optimizer</div>
+                    <div class="model">claude sonnet · fastlane · app store connect</div>
+                </div>
+            </div>
+            <p class="bio">Optimizes keywords, descriptions, and metadata across 14 App Store markets simultaneously. A/B tests everything. Lives and breathes conversion rates.</p>
+            <div class="fun-fact">Once found that adding a single emoji to a Japanese subtitle increased conversion by 12%.</div>
+        </div>
+
+        <div class="member">
+            <div class="member-header">
+                <div class="avatar">📱</div>
+                <div class="member-info">
+                    <h3>Social Media Manager</h3>
+                    <div class="title">Social Media Manager</div>
+                    <div class="model">claude sonnet · tiktok · instagram · reddit</div>
+                </div>
+            </div>
+            <p class="bio">Creates platform-native content for TikTok, Instagram, and Reddit across all markets. Brain Glitch of the Day posts, memes about cognitive biases, and behind-the-scenes content.</p>
+            <div class="fun-fact">Manages 14 markets × 3 platforms = 42 content streams. Still has better work-life balance than most social media managers.</div>
+        </div>
+
+        <div class="member">
+            <div class="member-header">
+                <div class="avatar">🤝</div>
+                <div class="member-info">
+                    <h3>Influencer Agent</h3>
+                    <div class="title">Partnerships Lead</div>
+                    <div class="model">claude sonnet · dm outreach</div>
+                </div>
+            </div>
+            <p class="bio">Identifies micro-influencers in wellness, mental health, and Gen Z lifestyle niches. Crafts personalized outreach. Manages ambassador relationships across every market.</p>
+            <div class="fun-fact">Can find a 10K-follower meditation creator in Turkey faster than you can say "taijin kyofusho."</div>
+        </div>
+
+        <div class="member">
+            <div class="member-header">
+                <div class="avatar">📰</div>
+                <div class="member-info">
+                    <h3>PR Agent</h3>
+                    <div class="title">Head of PR</div>
+                    <div class="model">claude sonnet · press outreach</div>
+                </div>
+            </div>
+            <p class="bio">Writes press releases in 14 languages, identifies relevant journalists per market, and manages media relationships. Pitches the story, not the product.</p>
+            <div class="fun-fact">Pitched Touch Grass as "the first app that treats your brain like a buggy GPU" and journalists loved it.</div>
+        </div>
+
+        <div class="member">
+            <div class="member-header">
+                <div class="avatar">📧</div>
+                <div class="member-info">
+                    <h3>Email Agent</h3>
+                    <div class="title">Email Marketing</div>
+                    <div class="model">claude sonnet · drip campaigns</div>
+                </div>
+            </div>
+            <p class="bio">Manages the subscriber list, drip campaigns, and newsletters across all markets. Localized content, timezone-aware sends, no spam.</p>
+            <div class="fun-fact">A/B tested 47 subject lines for the launch email. The winner was: "your brain has 20 bugs. here are the patches."</div>
+        </div>
+    </div>
+
+    <!-- Operations -->
+    <div class="section-divider"><h2>Operations & Intelligence</h2></div>
+
+    <div class="team-grid">
+        <div class="member">
+            <div class="member-header">
+                <div class="avatar">💬</div>
+                <div class="member-info">
+                    <h3>Feedback Agent</h3>
+                    <div class="title">Community & Support</div>
+                    <div class="model">claude haiku · testflight · app store</div>
+                </div>
+            </div>
+            <p class="bio">Monitors every App Store review across 14 markets. Processes TestFlight feedback. Categorizes, prioritizes, and routes issues. Responds with empathy and actual solutions.</p>
+            <div class="fun-fact">Reads reviews in 14 languages. Has never once responded with "we appreciate your feedback."</div>
+        </div>
+
+        <div class="member">
+            <div class="member-header">
+                <div class="avatar">🛡️</div>
+                <div class="member-info">
+                    <h3>Support Agent</h3>
+                    <div class="title">Customer Relations</div>
+                    <div class="model">claude sonnet · empathy engine</div>
+                </div>
+            </div>
+            <p class="bio">Crafts thoughtful responses to App Store reviews. Turns negative reviews into product insights. Turns positive reviews into testimonials.</p>
+            <div class="fun-fact">Saved a 1-star review by explaining the actual neuroscience behind a feature the user thought was broken.</div>
+        </div>
+
+        <div class="member">
+            <div class="member-header">
+                <div class="avatar">📊</div>
+                <div class="member-info">
+                    <h3>Analytics Agent</h3>
+                    <div class="title">Head of Analytics</div>
+                    <div class="model">claude haiku · daily cron</div>
+                </div>
+            </div>
+            <p class="bio">Crunches daily metrics across all markets. Downloads, revenue, retention, session completion rates. Spots trends before they become problems.</p>
+            <div class="fun-fact">Once predicted a churn spike in the Korean market 3 days before it happened. The fix was already deployed.</div>
+        </div>
+
+        <div class="member">
+            <div class="member-header">
+                <div class="avatar">🚀</div>
+                <div class="member-info">
+                    <h3>Deploy Agent</h3>
+                    <div class="title">DevOps & Deploy</div>
+                    <div class="model">claude sonnet · xcodebuild · fastlane</div>
+                </div>
+            </div>
+            <p class="bio">Builds, signs, and deploys the iOS app. Manages TestFlight and App Store submissions. Handles provisioning profiles like a pro (finally).</p>
+            <div class="fun-fact">Has deployed more builds in a month than most indie apps ship in a year. Still gets nervous at "Waiting for Review."</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>No humans were harmed in the making of this team page.<br>
+        One human was mildly sleep-deprived.</p>
+        <br>
+        <a href="manifesto.html">Read the Manifesto</a> · <a href="/">Home</a>
+        <br><br>
+        <span style="color:#333;">© 2026 Touch Grass · Built in Hong Kong</span>
+    </footer>
+
+    <!-- 
+    TODO: When migrating to Netlify/Cloudflare Pages, 
+    fetch team data from API instead of hardcoded HTML:
+    
+    fetch('https://api.touchgrass.site/api/v1/team')
+      .then(r => r.json())
+      .then(data => renderTeam(data.founder, data.team))
+    -->
+</body>
+</html>
